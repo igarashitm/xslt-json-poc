@@ -38,8 +38,8 @@ with `map` element, a string text node is represented with `string` element, and
    </map>
 </array>
 ```
-In this XSLT, it performs an additional conversion to the logical XML document structure, so that
-the document tree rendered in DataMapper UI would be more human friendly. Here is an example:
+In this XSLT experiment, it performs an additional conversion to the logical XML document structure, so that
+the document tree rendered in DataMapper UI would be more human friendly. Here is the output from the JUnit test:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <array>
@@ -68,14 +68,40 @@ DataMapper can generate cleaner and easy to read XPath expression as a mapping o
 - [XSLT file](src/test/resources/01-with-builtin/01-02-target.xsl)
 
 Simulates creating a JSON output out of the Kaoto DataMapper step. Deliver `Cart` XML in the body,
-`Account` XML in the `account` variable', and a sequence number in the `orderSequence` variable,
+`Account` XML in the `account` variable, and a sequence number in the `orderSequence` variable,
 then create a `ShipOrder` JSON object out of them.
 If you look into the 
 [XSLT file](src/test/resources/01-with-builtin/01-02-target.xsl), you can see the lossless
-elements are directly placed instead of the logical format of the target document. It expects
-Kaoto DataMapper serializer/deserializer to convert from/to the Kaoto DataMapper internal mapping
-model objects.
+elements are directly placed instead of the logical format of the target document. While DataMapper
+UI still renders the tree representation of logical target document, it is expected that the
+Kaoto DataMapper serializer/deserializer handles lossless format and converts from/to the
+Kaoto DataMapper internal mapping model objects.
 
+Here is the output from the JUnit test:
+```json
+{
+  "OrderId" : "ORD-ACC001-263",
+  "OrderPerson" : "acc001 : Tarou",
+  "ShipTo" : {
+    "Name" : "Tarou",
+    "Address" : {
+      "Street" : "314 Littleton Rd",
+      "City" : "Westford",
+      "State" : "",
+      "Country" : "US"
+    }
+  },
+  "Item" : [ {
+    "Title" : "Apple",
+    "Quantity" : 10,
+    "Price" : 5
+  }, {
+    "Title" : "Banana",
+    "Quantity" : 5,
+    "Price" : 16.05
+  } ]
+}
+```
 ### Creates JSON output out of multiple JSON inputs
 - [Camel Route](src/test/resources/01-with-builtin/01-03-full.yaml)
 - [XSLT file](src/test/resources/01-with-builtin/01-03-full.xsl)
@@ -89,6 +115,31 @@ This doesn't only mean JSON to JSON mapping is achieved, but it also means that 
 an output could be JSON format in a single DataMapper step, which means we can achieve cross
 format data mappings between XML and JSON.
 
+Here is the output from the JUnit test:
+```json
+{
+  "OrderId" : "ORD-ACC001-534",
+  "OrderPerson" : "acc001 : Tarou",
+  "ShipTo" : {
+    "Name" : "Tarou",
+    "Address" : {
+      "Street" : "314 Littleton Rd",
+      "City" : "Westford",
+      "State" : "Massachusetts",
+      "Country" : "US"
+    }
+  },
+  "Item" : [ {
+    "Title" : "Apple",
+    "Quantity" : 10,
+    "Price" : 5
+  }, {
+    "Title" : "Banana",
+    "Quantity" : 5,
+    "Price" : 16.05
+  } ]
+}
+```
 Lastly, check again how 2-step conversion cleans up the XPath expression compared to the lossless structure: 
 - lossless: `$jsonAccount/map/map[@key='Address']/string[@key='Street']`
 - logical: `$jsonAccount/map/Address/Street`
