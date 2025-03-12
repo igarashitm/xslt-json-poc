@@ -1,0 +1,10 @@
+{
+    "AccountId": "acc001",
+    "Name": "Tarou",
+    "Address": {
+        "Street": "314 Littleton Rd",
+        "City": "Westford",
+        "State": "Massachusetts",
+        "Country": "US"
+    }
+}

@@ -1,0 +1,37 @@
+- route:
+    id: xslt-json-with-builtin
+    from:
+      uri: direct:mapping
+      steps:
+        - setVariable:
+            name: orderSequence
+            expression:
+              simple:
+                expression: ${random(1,1000)}
+        - setVariable:
+            name: account
+            expression:
+              constant:
+                expression: resource:classpath:account.json
+        - setBody:
+            expression:
+              constant:
+                expression: resource:classpath:cart.json
+        - step:
+            id: kaoto-datamapper-b4e63594
+            steps:
+              - setHeader:
+                  id: kaoto-datamapper-body-as-header-0001
+                  name: kaotoDataMapperBody
+                  expression:
+                    simple:
+                      expression: ${body}
+              - setBody:
+                  expression:
+                    simple:
+                      expression: ${null}
+              - to:
+                  id: kaoto-datamapper-xslt-8305
+                  uri: xslt-saxon:01-with-builtin/01-03-full.xsl
+                  parameters:
+                    failOnNullBody: false

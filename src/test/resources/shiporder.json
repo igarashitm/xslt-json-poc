@@ -1,0 +1,23 @@
+{
+    "OrderId": "ORD-acc001-01",
+    "OrderPerson": "acc001:Tarou",
+    "ShipTo": {
+        "Name": "Tarou",
+        "Address": "314 Littleton Rd",
+        "City": "Westford",
+        "State": "Massachusetts",
+        "Country": "US"
+    },
+    "Item": [
+        {
+            "Title": "Apple",
+            "Quantity": 10,
+            "Price": 5.00
+        },
+        {
+            "Title": "Banana",
+            "Quantity": 5,
+            "Price": 16.05
+        }
+    ]
+}

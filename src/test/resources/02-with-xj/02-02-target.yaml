@@ -1,0 +1,22 @@
+- route:
+    id: xslt-json-with-xj-target
+    from:
+      uri: direct:mapping
+      steps:
+        - setVariable:
+            id: setVariable-2466
+            expression:
+              simple:
+                expression: resource:classpath:account.json
+            name: Account
+        - setBody:
+            expression:
+              constant:
+                expression: resource:classpath:cart.json
+        - step:
+            id: kaoto-datamapper-43890c2
+            steps:
+              - to:
+                  id: kaoto-datamapper-xslt-3306
+                  uri: xslt-saxon:02-with-xj/02-02-target.xsl
+                  parameters: {}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Cart>
+    <Item>
+        <Title>Apple</Title>
+        <Note>Fuji</Note>
+        <Quantity>10</Quantity>
+        <Price>5.00</Price>
+    </Item>
+    <Item>
+        <Title>Banana</Title>
+        <Note>Philippines</Note>
+        <Quantity>5</Quantity>
+        <Price>16.05</Price>
+    </Item>
+</Cart>

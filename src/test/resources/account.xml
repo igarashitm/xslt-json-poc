@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Account AccountId="acc001">
+    <Name>Tarou</Name>
+    <Address>
+        <Street>314 Littleton Rd</Street>
+        <City>Westford</City>
+        <State>Massachusetts</State>
+        <Country>US</Country>
+    </Address>
+</Account>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ShipOrder xmlns:kaoto="http://kaoto.io/DataMapper" xmlns:xf="http://www.w3.org/2005/xpath-functions">
+    <OrderId>ORD-acc001-01</OrderId>
+    <OrderPerson>acc001:Tarou</OrderPerson>
+    <ShipTo>
+        <Name>Tarou</Name>
+        <Address>314 Littleton Rd</Address>
+        <City>Westford</City>
+        <State>Massachusetts</State>
+        <Country>US</Country>
+    </ShipTo>
+    <Item>
+        <Title>Apple</Title>
+        <Quantity kaoto:jsonType="xf:number">10</Quantity>
+        <Price kaoto:jsonType="xf:number">5.00</Price>
+    </Item>
+    <Item>
+        <Title>Banana</Title>
+        <Quantity kaoto:jsonType="xf:number">5</Quantity>
+        <Price kaoto:jsonType="xf:number">16.05</Price>
+    </Item>
+</ShipOrder>

@@ -1,0 +1,27 @@
+- route:
+    id: xslt-json-with-builtin-source
+    from:
+      uri: direct:mapping
+      steps:
+        - setBody:
+            expression:
+              constant:
+                expression: resource:classpath:cart.json
+        - step:
+            id: kaoto-datamapper-b4e63594
+            steps:
+              - setHeader:
+                  id: kaoto-datamapper-body-as-header-0001
+                  name: kaotoDataMapperBody
+                  expression:
+                    simple:
+                      expression: ${body}
+              - setBody:
+                  expression:
+                    simple:
+                      expression: ${null}
+              - to:
+                  id: kaoto-datamapper-xslt-8305
+                  uri: xslt-saxon:01-with-builtin/01-01-source.xsl
+                  parameters:
+                    failOnNullBody: false
