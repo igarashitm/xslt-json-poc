@@ -11,12 +11,13 @@ Use `json-to-xml()` and `xml-to-json()` to perform JSON mappings.
 - [XSLT file](src/test/resources/01-with-builtin/01-01-source.xsl)
 
 Simulates delivering a JSON body to the Kaoto DataMapper step. Since camel-xslt-saxon assumes the body
-to be XML Document, in order to avoid an error, it
-- relocates the Camel message body to a message header (`kaotoDataMapperBody`)
+to be XML Document - if the main input is not XML, XSLT processor throws an error - in order to avoid
+an error, it
+- relocates the Camel message body to a variable (`kaotoDataMapperBody`)
 - sets `null` to the message body
 - sets `failOnNullBody` to `false` on camel-xslt-saxon endpoint
 
-and then uses the relocated message header as a parameter inside the XSLT.
+and then uses the relocated variable as a parameter inside the XSLT.
 
 `json-to-xml()` function converts JSON into an intermediate XML format, so called the lossless conversion.
 In that intermediate format, JSON array is represented with `array` element, JSON object is represented

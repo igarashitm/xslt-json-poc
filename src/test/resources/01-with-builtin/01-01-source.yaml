@@ -10,8 +10,8 @@
         - step:
             id: kaoto-datamapper-b4e63594
             steps:
-              - setHeader:
-                  id: kaoto-datamapper-body-as-header-0001
+              - setVariable:
+                  id: kaoto-datamapper-body-as-variable-0001
                   name: kaotoDataMapperBody
                   expression:
                     simple:
