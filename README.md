@@ -149,5 +149,12 @@ It will be much intuitive when the document structure is rendered as a tree stru
 
 ## With camel-xj
 Experimentation on hold. While camel-xj can handle the JSON body as a stream, the other side-inputs
-passed in as XSLT parameters are still supposed to be string. In order to support large
-inputs comprehensively, we might need something else than XSLT.
+passed in as XSLT parameters are still supposed to be string.
+Furthermore, taking a stream input also add more restrictions inside the XSLT, such as it can't access
+siblings. 
+
+cf. https://www.w3.org/TR/xslt-30/#streaming-concepts
+
+In order to support large inputs comprehensively, we might need a separate solution at least - it could
+be just an explicit `Enable streaming` mode in DataMapper UI, or more that that - or even possibly
+something else than XSLT.
