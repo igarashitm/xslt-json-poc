@@ -147,6 +147,32 @@ Lastly, check again how 2-step conversion cleans up the XPath expression compare
 
 It will be much intuitive when the document structure is rendered as a tree structure on DataMapper UI.
 
+## With XSLT 3.0 built-in functions, but keep using lossless structure
+While logical vs. lossless concern experimented in the previous section has one point, we received a
+feedback that it's better to eliminate the intermediate conversion and keep generated XSLT as smaller & simpler
+as possible.
+
+In order to achieve that, but at the same time to keep the XPath expression field path and the graphically
+rendered document tree structure consistent, we came to the conclusion to render the lossless structure
+into the document tree, but with some arrangement. Instead of showing `@key` attribute of the lossless
+elements as an individual field, we make DataMapper UI use for example `map[@key='Address']` as a field
+key and render it in the document tree. Taking the `Street` field as an example, the document tree structure
+would look like: 
+```text
+$jsonAccount
+|- map
+   |- map[@key='Address']
+      |- string[@key='Street']
+```
+In this way, while it looks strange and verbose at a glance, the xpath expression could be self descriptive
+when you compare it with the document tree rendered in the UI, as well as consistent among UI representation,
+xpath expression and the final XSLT output.
+```xpath
+$jsonAccount/map/map[@key='Address']/string[@key='Street']
+```
+
+_____ route, XSLT and JUnit test TBD. _____ 
+
 ## With camel-xj
 Experimentation on hold. While camel-xj can handle the JSON body as a stream, the other side-inputs
 passed in as XSLT parameters are still supposed to be string.
