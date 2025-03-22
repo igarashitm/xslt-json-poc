@@ -148,6 +148,11 @@ Lastly, check again how 2-step conversion cleans up the XPath expression compare
 It will be much intuitive when the document structure is rendered as a tree structure on DataMapper UI.
 
 ## With XSLT 3.0 built-in functions, but keep using lossless structure
+
+- [JUnit Test](src/test/java/com/github/igarashitm/xsltjsonpoc/WithBuiltinWithLosslessTest.java)
+- [Camel Route](src/test/resources/01-b-with-builtin-with-lossless/01-b-full.yaml)
+- [XSLT file](src/test/resources/01-b-with-builtin-with-lossless/01-b-full.xsl)
+
 While logical vs. lossless concern experimented in the previous section has one point, we received a
 feedback that it's better to eliminate the intermediate conversion and keep generated XSLT as smaller & simpler
 as possible.
@@ -170,8 +175,6 @@ xpath expression and the final XSLT output.
 ```xpath
 $jsonAccount/map/map[@key='Address']/string[@key='Street']
 ```
-
-_____ route, XSLT and JUnit test TBD. _____ 
 
 ## With camel-xj
 Experimentation on hold. While camel-xj can handle the JSON body as a stream, the other side-inputs
