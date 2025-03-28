@@ -32,6 +32,6 @@
                       expression: ${null}
               - to:
                   id: kaoto-datamapper-xslt-8305
-                  uri: xslt-saxon:01-b-with-builtin-with-lossless/01-b-full.xsl
+                  uri: xslt-saxon:01-b-with-builtin-with-lossless/primitives.xsl
                   parameters:
                     failOnNullBody: false
